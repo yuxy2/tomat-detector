@@ -1,0 +1,24 @@
+# Virtual environment
+.venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Datasets (reproducible/generated)
+dataset/
+
+# Next.js and frontend build/dep folders (if nested)
+**/node_modules/
+**/.next/
+**/build/
+**/out/
+
+# OS files
+.DS_Store
+Thumbs.db
