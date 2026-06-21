@@ -1,0 +1,16 @@
+.git
+.gitignore
+.venv
+.next
+node_modules
+web/node_modules
+web/.next
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.db
+dataset/
+model_tomat.h5
+class_mapping.json
+training_history.png
