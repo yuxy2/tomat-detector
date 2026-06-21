@@ -504,16 +504,16 @@ export default function TomatoDetector() {
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-500/30 shrink-0 bg-slate-900 flex items-center justify-center">
                     <img 
                       src="/yusuf.jpg" 
-                      alt="Yusuf" 
+                      alt="Yusuf Mustofa" 
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = "https://placehold.co/150x150/0f111a/cbd5e1?text=Yusuf";
+                        (e.target as HTMLImageElement).src = "https://placehold.co/150x150/0f111a/cbd5e1?text=Yusuf+Mustofa";
                       }}
                     />
                   </div>
                   <div>
                     <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-1">Mahasiswa / Pengembang</span>
-                    <h4 className="font-bold text-slate-200 text-sm leading-snug">Yusuf</h4>
+                    <h4 className="font-bold text-slate-200 text-sm leading-snug">Yusuf Mustofa</h4>
                     <p className="text-xs text-slate-400 mt-1">Pengembang Sistem Deteksi Kematangan Tomat</p>
                   </div>
                 </div>
