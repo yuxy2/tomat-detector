@@ -263,7 +263,7 @@ export default function TomatoDetector() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#090b11] text-slate-200 font-sans">
+    <div className="flex h-screen overflow-hidden bg-[#090b11] text-slate-200 font-sans">
       {/* Sidebar Navigation */}
       <aside className="w-80 bg-[#0f111a] border-r border-slate-800/80 p-6 flex flex-col justify-between">
         <div>
