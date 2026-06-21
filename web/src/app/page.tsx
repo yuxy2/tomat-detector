@@ -14,7 +14,9 @@ import {
   HelpCircle,
   FileImage,
   Layers,
-  ArrowRight
+  ArrowRight,
+  Menu,
+  X
 } from "lucide-react";
 
 // API Base URL
@@ -47,6 +49,7 @@ interface PredictionResult {
 
 export default function TomatoDetector() {
   const [activeTab, setActiveTab] = useState<"dashboard" | "generator" | "training" | "detection">("dashboard");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   // API states
   const [stats, setStats] = useState<Stats | null>(null);
@@ -263,75 +266,88 @@ export default function TomatoDetector() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#090b11] text-slate-200 font-sans">
+    <div className="flex flex-col lg:flex-row h-screen overflow-hidden bg-[#090b11] text-slate-200 font-sans">
       {/* Sidebar Navigation */}
-      <aside className="w-80 bg-[#0f111a] border-r border-slate-800/80 p-6 flex flex-col justify-between">
+      <aside className="w-full lg:w-80 bg-[#0f111a] border-b lg:border-r border-slate-800/80 p-4 lg:p-6 flex flex-col justify-between shrink-0 z-30 overflow-y-auto lg:overflow-y-visible">
         <div>
-          {/* Brand Logo */}
-          <div className="flex items-center space-x-3 mb-10 px-2">
-            <div className="bg-red-500/10 p-2 rounded-lg border border-red-500/30">
-              <span className="text-2xl">🍅</span>
+          {/* Brand Logo & Mobile Menu Toggle */}
+          <div className="flex items-center justify-between lg:block mb-0 lg:mb-10">
+            <div className="flex items-center space-x-3 px-2">
+              <div className="bg-red-500/10 p-2 rounded-lg border border-red-500/30">
+                <span className="text-2xl">🍅</span>
+              </div>
+              <div>
+                <h2 className="font-extrabold text-xl text-slate-100 tracking-tight">TomatCNN</h2>
+                <p className="text-xs text-slate-500 font-medium">Ripeness Detection System</p>
+              </div>
             </div>
-            <div>
-              <h2 className="font-extrabold text-xl text-slate-100 tracking-tight">TomatCNN</h2>
-              <p className="text-xs text-slate-500 font-medium">Ripeness Detection System</p>
-            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 bg-slate-900 border border-slate-800 hover:bg-slate-800/80 rounded-xl text-slate-400 hover:text-slate-200 transition lg:hidden"
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
 
-          {/* Nav Links */}
-          <nav className="space-y-1">
-            <button
-              onClick={() => setActiveTab("dashboard")}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                activeTab === "dashboard"
-                  ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
-                  : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
-              }`}
-            >
-              <Home size={18} />
-              <span>Dashboard & Teori</span>
-            </button>
+          {/* Nav Links & System Stats */}
+          <div className={`${isMenuOpen ? "block" : "hidden"} lg:block mt-4 lg:mt-0 space-y-6`}>
+            {/* Nav Links */}
+            <nav className="space-y-1">
+              <button
+                onClick={() => { setActiveTab("dashboard"); setIsMenuOpen(false); }}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                  activeTab === "dashboard"
+                    ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
+                    : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
+                }`}
+              >
+                <Home size={18} />
+                <span>Dashboard & Teori</span>
+              </button>
 
-            <button
-              onClick={() => setActiveTab("generator")}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                activeTab === "generator"
-                  ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
-                  : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
-              }`}
-            >
-              <FolderPlus size={18} />
-              <span>Dataset Generator</span>
-            </button>
+              <button
+                onClick={() => { setActiveTab("generator"); setIsMenuOpen(false); }}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                  activeTab === "generator"
+                    ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
+                    : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
+                }`}
+              >
+                <FolderPlus size={18} />
+                <span>Dataset Generator</span>
+              </button>
 
-            <button
-              onClick={() => setActiveTab("training")}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                activeTab === "training"
-                  ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
-                  : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
-              }`}
-            >
-              <Settings size={18} />
-              <span>Pelatihan Model</span>
-            </button>
+              <button
+                onClick={() => { setActiveTab("training"); setIsMenuOpen(false); }}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                  activeTab === "training"
+                    ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
+                    : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
+                }`}
+              >
+                <Settings size={18} />
+                <span>Pelatihan Model</span>
+              </button>
 
-            <button
-              onClick={() => setActiveTab("detection")}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                activeTab === "detection"
-                  ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
-                  : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
-              }`}
-            >
-              <Search size={18} />
-              <span>Deteksi Kematangan</span>
-            </button>
-          </nav>
+              <button
+                onClick={() => { setActiveTab("detection"); setIsMenuOpen(false); }}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                  activeTab === "detection"
+                    ? "bg-gradient-to-r from-red-500/10 to-red-500/5 text-red-400 border-l-2 border-red-500 px-[14px]"
+                    : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-200"
+                }`}
+              >
+                <Search size={18} />
+                <span>Deteksi Kematangan</span>
+              </button>
+            </nav>
+          </div>
         </div>
 
-        {/* Sidebar Footer Stats */}
-        <div className="bg-slate-900/60 border border-slate-800/60 rounded-xl p-4 space-y-3">
+        {/* Sidebar Footer Stats (collapsible as well) */}
+        <div className={`${isMenuOpen ? "block" : "hidden"} lg:block mt-4 lg:mt-0 bg-slate-900/60 border border-slate-800/60 rounded-xl p-4 space-y-3`}>
           <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Status Sistem</h4>
           {statsLoading ? (
             <div className="flex items-center space-x-2 text-xs text-slate-500">
@@ -378,9 +394,9 @@ export default function TomatoDetector() {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 p-10 overflow-y-auto">
+      <main className="flex-1 p-4 md:p-10 overflow-y-auto">
         {/* Top Header Title */}
-        <header className="mb-10 flex justify-between items-center">
+        <header className="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h1 className="text-3xl font-extrabold text-slate-100 tracking-tight bg-gradient-to-r from-red-500 to-amber-500 bg-clip-text text-transparent">
               Deteksi Kematangan Tomat
@@ -389,7 +405,7 @@ export default function TomatoDetector() {
           </div>
           <button 
             onClick={fetchStats}
-            className="p-3 bg-slate-900 border border-slate-800 hover:bg-slate-800/80 rounded-xl text-slate-400 hover:text-slate-200 transition"
+            className="p-3 bg-slate-900 border border-slate-800 hover:bg-slate-800/80 rounded-xl text-slate-400 hover:text-slate-200 transition shrink-0"
           >
             <RefreshCw size={18} />
           </button>
