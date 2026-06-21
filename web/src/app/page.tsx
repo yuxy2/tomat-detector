@@ -540,7 +540,7 @@ export default function TomatoDetector() {
                       <div>
                         <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-1">Mahasiswa / Pengembang</span>
                         <h4 className="font-bold text-slate-200 text-sm leading-snug">Dicki Kusumah</h4>
-                        <p className="text-xs text-slate-400 mt-1">Pengembang Antarmuka Web (UI/UX)</p>
+                        <p className="text-xs text-slate-400 mt-1">Laporan & Dataset</p>
                       </div>
                     </div>
                   </div>
