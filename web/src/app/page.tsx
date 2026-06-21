@@ -477,11 +477,12 @@ export default function TomatoDetector() {
             {/* Academic & Developer Profile Card */}
             <div className="bg-slate-800/20 border border-slate-700/30 backdrop-blur-md rounded-2xl p-6">
               <h3 className="text-lg font-bold text-slate-200 mb-6 flex items-center gap-2">
-                <span className="text-red-500">🎓</span> Profil Akademik & Pengembang
+                <span className="text-red-500">🎓</span> Profil Akademik & Tim Pengembang
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              <div className="space-y-6">
                 {/* Dosen Pengampu */}
-                <div className="bg-[#0f111a]/60 border border-slate-800/60 rounded-xl p-5 flex items-center space-x-4">
+                <div className="bg-[#0f111a]/60 border border-slate-800/60 rounded-xl p-5 flex items-center space-x-4 max-w-xl mx-auto">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-500/30 shrink-0 bg-slate-900 flex items-center justify-center">
                     <img 
                       src="/dosen_pengampu.jpg" 
@@ -499,22 +500,49 @@ export default function TomatoDetector() {
                   </div>
                 </div>
 
-                {/* Mahasiswa */}
-                <div className="bg-[#0f111a]/60 border border-slate-800/60 rounded-xl p-5 flex items-center space-x-4">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-500/30 shrink-0 bg-slate-900 flex items-center justify-center">
-                    <img 
-                      src="/yusuf.jpg" 
-                      alt="Yusuf Mustofa" 
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = "https://placehold.co/150x150/0f111a/cbd5e1?text=Yusuf+Mustofa";
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-1">Mahasiswa / Pengembang</span>
-                    <h4 className="font-bold text-slate-200 text-sm leading-snug">Yusuf Mustofa</h4>
-                    <p className="text-xs text-slate-400 mt-1">Pengembang Sistem Deteksi Kematangan Tomat</p>
+                <div className="border-t border-slate-800/40 my-6"></div>
+
+                {/* Tim Pengembang */}
+                <div>
+                  <h5 className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-4 text-center">Tim Pengembang Sistem</h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Mahasiswa 1 */}
+                    <div className="bg-[#0f111a]/60 border border-slate-800/60 rounded-xl p-5 flex items-center space-x-4">
+                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-500/30 shrink-0 bg-slate-900 flex items-center justify-center">
+                        <img 
+                          src="/yusuf.jpg" 
+                          alt="Yusuf Mustofa" 
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "https://placehold.co/150x150/0f111a/cbd5e1?text=Yusuf";
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-1">Mahasiswa / Pengembang</span>
+                        <h4 className="font-bold text-slate-200 text-sm leading-snug">Yusuf Mustofa</h4>
+                        <p className="text-xs text-slate-400 mt-1">Mahasiswa & Pengembang</p>
+                      </div>
+                    </div>
+
+                    {/* Mahasiswa 2 */}
+                    <div className="bg-[#0f111a]/60 border border-slate-800/60 rounded-xl p-5 flex items-center space-x-4">
+                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-500/30 shrink-0 bg-slate-900 flex items-center justify-center">
+                        <img 
+                          src="/dicki_kusumah.jpeg" 
+                          alt="Dicki Kusumah" 
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "https://placehold.co/150x150/0f111a/cbd5e1?text=Dicki";
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-1">Mahasiswa / Pengembang</span>
+                        <h4 className="font-bold text-slate-200 text-sm leading-snug">Dicki Kusumah</h4>
+                        <p className="text-xs text-slate-400 mt-1">Pengembang Antarmuka Web (UI/UX)</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
