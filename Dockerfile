@@ -21,7 +21,8 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pillow \
     matplotlib \
     tensorflow-cpu \
-    keras==3.14.1
+    keras==3.14.1 \
+    python-multipart
 
 # Copy all project files
 COPY . .
